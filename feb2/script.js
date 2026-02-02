@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalFeeDisplay = document.getElementById('totalFee');
     const dueAmountDisplay = document.getElementById('dueAmount');
 
-    // helper: create inline error span after input
     function ensureErrorSpan(input) {
         const next = input.nextElementSibling;
         if (next && next.classList && next.classList.contains('field-error')) return next;
@@ -38,19 +37,15 @@ document.addEventListener('DOMContentLoaded', () => {
         input.style.border = '';
     }
 
-    // enforce required for all fields and maxlength for text
     allInputs.forEach(input => {
-        // mark required
         input.required = true;
 
         if (input.type === 'text') {
             input.maxLength = 20;
         }
 
-        // ensure error element exists
         ensureErrorSpan(input);
 
-        // input listener
         input.addEventListener('input', (e) => {
             const val = e.target.value;
             if (e.target.type === 'text' && val.length > 20) {
@@ -61,16 +56,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (e.target.value !== '' && parseFloat(e.target.value) < 0) {
                     e.target.value = Math.abs(parseFloat(e.target.value));
                 }
-                // clear error while typing
                 if (e.target.value !== '') clearFieldError(e.target);
             } else {
                 if (e.target.value.trim() !== '') clearFieldError(e.target);
             }
-            // recalc totals on any change
             calculateTotals();
         });
 
-        // blur listener shows mandatory if left empty
         input.addEventListener('blur', (e) => {
             const t = e.target;
             if (t.type === 'number') {
@@ -83,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // totals calculation
     function calculateTotals() {
         let total = 0;
         feeItems.forEach(item => {
@@ -101,9 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     feeItems.forEach(input => input.addEventListener('input', calculateTotals));
     amountPaidInput.addEventListener('input', calculateTotals);
 
-    // final submit validation
     feeForm.addEventListener('submit', (e) => {
-        let valid = true;
         // check all inputs
         allInputs.forEach(input => {
             if (input.type === 'number') {
@@ -127,6 +116,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // initial calc
     calculateTotals();
 });

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIET Fee Entry Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>KIET Group of Institutions - Fee Entry</h2>
+        <form id="feeForm">
+            <div class="row">
+                <div class="input-group">
+                    <label>Session</label>
+                    <input type="text" value="2025-2026" readonly>
+                </div>
+                <div class="input-group">
+                    <label>Date</label>
+                    <input type="date" id="date" required>
+                </div>
+            </div>
+
+            <fieldset>
+                <legend>Student Information</legend>
+                <div class="row">
+                    <input type="text" placeholder="Receipt No (e.g., AF1319)" required>
+                    <input type="text" placeholder="Student Name" required>
+                </div>
+                <div class="row">
+                    <input type="text" placeholder="Father's Name" required>
+                    <input type="text" placeholder="Roll No." required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Academic Details</legend>
+                <div class="row">
+                    <input type="text" placeholder="Course (e.g., B TECH)" required>
+                    <input type="text" placeholder="Batch (e.g., 2024-2028)" required>
+                    <input type="text" placeholder="Branch (e.g., CSIT)" required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Fee Particulars</legend>
+                <div class="fee-grid">
+                    <label>Tuition Fee</label> <input type="number" class="fee-input" id="tuition" value="112099">
+                    <label>Medical & Insurance</label> <input type="number" class="fee-input" id="medical" value="700">
+                    <label>Alumni Fees</label> <input type="number" class="fee-input" id="alumni" value="1200">
+                    <label>Book Bank</label> <input type="number" class="fee-input" id="bookbank" value="6000">
+                    <label>Career Planning & Dev</label> <input type="number" class="fee-input" id="career" value="17000">
+                    <label>Exam Fees</label> <input type="number" class="fee-input" id="exam" value="8000">
+                    <label>Registration Fee</label> <input type="number" class="fee-input" id="reg" value="4000">
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Payment Summary</legend>
+                <div class="row">
+                    <div class="input-group">
+                        <label>Total Fee</label>
+                        <input type="number" id="totalFee" readonly>
+                    </div>
+                    <div class="input-group">
+                        <label>Amount Paid</label>
+                        <input type="number" id="amountPaid" value="90000">
+                    </div>
+                    <div class="input-group">
+                        <label>Due Amount</label>
+                        <input type="number" id="dueAmount" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <input type="text" placeholder="Transaction ID / Online Payment No.">
+                    <input type="text" placeholder="Bank Name (e.g., ICICI)">
+                </div>
+            </fieldset>
+
+            <button type="submit">Submit Fee Record</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
